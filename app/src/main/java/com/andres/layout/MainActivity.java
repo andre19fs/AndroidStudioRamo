@@ -1,54 +1,74 @@
 package com.andres.layout;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import java.util.Random;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    CheckBox checkBox;
+    RadioGroup radioGroup;
+    ProgressBar progressBar;
+    RatingBar ratingBar;
+    Spinner spinner;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ratingBar), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        EditText campo = findViewById(R.id.txtMensaje);
-        TextView mensaje = findViewById(R.id.lblMensaje);
-        Button btnEnviar = findViewById(R.id.btnCambiarColor);
-        Button btnInvertir = findViewById(R.id.btnInvertir);
+        checkBox = findViewById(R.id.checkBox);
+        radioGroup = findViewById(R.id.radioGroup);
+        progressBar = findViewById(R.id.progressBar);
+        ratingBar = findViewById(R.id.ratingBar);
+        spinner = findViewById(R.id.spinner);
+        recyclerView = findViewById(R.id.recyclerView);
 
-        //evento para cambiar el color del texto
-        btnEnviar.setOnClickListener(v -> {
-            String texto = campo.getText().toString();
-            mensaje.setText(texto);
+        
+        String[] animales = {"perro", "gato", "pajaro"};
 
-            int r = new Random().nextInt(256);
-            int g = new Random().nextInt(256);
-            int b = new Random().nextInt(256);
-            int color = Color.rgb(r, g, b);
-            mensaje.setTextColor(color);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, animales);
+        spinner.setAdapter(adapter);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add("pez");
+        lista.add("loro");
+        lista.add("lobo");
+        recyclerView.setAdapter(new Recycler(lista));
+
+
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) ->
+                Toast.makeText(this, "CheckBox: " + isChecked, Toast.LENGTH_SHORT).show());
+
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton rb = findViewById(checkedId);
+            Toast.makeText(this, "Radio : " + rb.getText(), Toast.LENGTH_SHORT).show();
         });
 
-        btnInvertir.setOnClickListener(v -> {
-            String Texto = mensaje.getText().toString();
-            String TextoInvertido = new StringBuilder(Texto).reverse().toString();
-            mensaje.setText(TextoInvertido);
-
-        });
-
+        ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) ->
+                Toast.makeText(this, "estrella: " + rating, Toast.LENGTH_SHORT).show());
     }
 }
