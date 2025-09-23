@@ -1,5 +1,6 @@
 package com.andres.layout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
@@ -15,6 +16,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button btnAceptar;
+    EditText etNombre;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,29 +31,14 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        EditText campo = findViewById(R.id.txtMensaje);
-        TextView mensaje = findViewById(R.id.lblMensaje);
-        Button btnEnviar = findViewById(R.id.btnCambiarColor);
-        Button btnInvertir = findViewById(R.id.btnInvertir);
+        btnAceptar = findViewById(R.id.btnAceptar);
+        etNombre = findViewById(R.id.etNombre);
 
-        //evento para cambiar el color del texto
-        btnEnviar.setOnClickListener(v -> {
-            String texto = campo.getText().toString();
-            mensaje.setText(texto);
-
-            int r = new Random().nextInt(256);
-            int g = new Random().nextInt(256);
-            int b = new Random().nextInt(256);
-            int color = Color.rgb(r, g, b);
-            mensaje.setTextColor(color);
+        btnAceptar.setOnClickListener(v -> {
+            String nombre = etNombre.getText().toString();
+            Intent intent = new Intent(MainActivity.this, ResultadoActivity.class);
+            intent.putExtra("nombre", nombre);
+            startActivity(intent);
         });
-
-        btnInvertir.setOnClickListener(v -> {
-            String Texto = mensaje.getText().toString();
-            String TextoInvertido = new StringBuilder(Texto).reverse().toString();
-            mensaje.setText(TextoInvertido);
-
-        });
-
     }
 }

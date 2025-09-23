@@ -9,144 +9,49 @@
     tools:context=".MainActivity">
 
 
+    <ImageView
+        android:id="@+id/imagen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/imagen"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="62dp" />
+
     <TextView
-        android:id="@+id/lblMensaje"
+        android:id="@+id/tvNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Escribe un mensaje que aparecera aca"
+        android:layout_marginTop="4dp"
+        android:text="Nombre foto"
         android:textColor="@android:color/holo_green_light"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imagen" />
 
     <EditText
-        android:id="@+id/txtMensaje"
+        android:id="@+id/etNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Escribe un mensaje"
+        android:hint="Nombre de la foto"
         android:minWidth="48dp"
         android:minHeight="48dp"
-        app:layout_constraintTop_toBottomOf="@id/lblMensaje"
+        app:layout_constraintTop_toBottomOf="@id/tvNombre"
         android:layout_marginBottom="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btnCambiarColor"
+        android:id="@+id/btnAceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
-        android:text="Cambia el color del texto"
+        android:text="Aceptar"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/txtMensaje"
+        app:layout_constraintTop_toBottomOf="@id/etNombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/btnInvertir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:text="Invierte el texto"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/btnCambiarColor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TableLayout
-        android:id="@+id/tableColores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnInvertir"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Color"
-                android:textStyle="bold"
-                android:padding="8dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hexadecimal"
-                android:textStyle="bold"
-                android:padding="8dp"/>
-        </TableRow>
-
-        <TableRow>
-            <View
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#FF0000"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="#FF0000"
-                android:padding="8dp"/>
-        </TableRow>
-
-        <TableRow>
-            <View
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#00FF00"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="#00FF00"
-                android:padding="8dp"/>
-        </TableRow>
-
-        <TableRow>
-            <View
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#0000FF"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="#0000FF"
-                android:padding="8dp"/>
-        </TableRow>
-
-        <TableRow>
-            <View
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#000000"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="#000000"
-                android:padding="8dp"/>
-        </TableRow>
-
-        <TableRow>
-            <View
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#FFFFFF"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="#FFFFFF"
-                android:padding="8dp"/>
-        </TableRow>
-
-    </TableLayout>
 
 
 
