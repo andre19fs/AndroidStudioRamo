@@ -1,7 +1,8 @@
 package com.example.semana9;
 
+import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
@@ -10,32 +11,27 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class VideoActivity extends AppCompatActivity {
 
-    Button btnAudio, btnVideo, btnAnimacion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_video);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        btnAnimacion = findViewById(R.id.btnAnimacion);
-        btnAnimacion.setOnClickListener(v -> {
-            startActivity(new android.content.Intent(this, AnimacionActivity.class));
-        });
-        btnAudio = findViewById(R.id.btnAudio);
-        btnAudio.setOnClickListener(v -> {
-            startActivity(new android.content.Intent(this, AudioActivity.class));
-        });
-        btnVideo = findViewById(R.id.btnVideo);
-        btnVideo.setOnClickListener(v -> {
-            startActivity(new android.content.Intent(this, VideoActivity.class));
-        });
 
+        VideoView video = findViewById(R.id.VideoContainer);
 
+        String videoC ="android.resource://" + getPackageName() + "/" + R.raw.video;
+        Uri uri =Uri.parse(videoC);
+        video.setVideoURI(uri);
+
+        MediaController mediaController = new MediaController(this);
+        video.setMediaController(mediaController);
+        mediaController.setAnchorView(video);
     }
 }
