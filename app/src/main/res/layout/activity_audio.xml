@@ -5,43 +5,33 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".AudioActivity">
 
     <Button
-        android:id="@+id/btnAudio"
+        android:id="@+id/btnPlay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Audio"
+        android:text="Play"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnVideo" />
+        app:layout_constraintEnd_toStartOf="@+id/btnPause" />
 
     <Button
-        android:id="@+id/btnVideo"
+        android:id="@+id/btnPause"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Video"
+        android:text="Pausa"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnAudio"
-        app:layout_constraintEnd_toStartOf="@+id/btnAnimacion" />
+        app:layout_constraintStart_toEndOf="@+id/btnPlay"
+        app:layout_constraintEnd_toStartOf="@+id/btnStop" />
 
     <Button
-        android:id="@+id/btnAnimacion"
+        android:id="@+id/btnStop"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Animacion"
+        android:text="Parar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnVideo"
+        app:layout_constraintStart_toEndOf="@+id/btnPause"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/imagen"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
